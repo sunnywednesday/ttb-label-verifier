@@ -1,0 +1,7 @@
+image_filename,brand_name,class_type,abv,net_contents,producer_name_address,country_of_origin
+label_01_clean_pass.png,OLD TOM DISTILLERY,Kentucky Straight Bourbon Whiskey,45% Alc./Vol. (90 Proof),750 mL,"Old Tom Distillery Co., Bardstown, KY",
+label_02_casing_review.png,STONE'S THROW,American Single Malt Whiskey,43% Alc./Vol. (86 Proof),750 mL,"Stone's Throw Distilling, Asheville, NC",
+label_03_warning_titlecase_fail.png,Harbor Light Spirits,London Dry Gin,40% Alc./Vol. (80 Proof),750 mL,"Harbor Light Spirits, Seattle, WA",
+label_04_abv_mismatch_fail.png,Redwood Ridge Vineyards,Cabernet Sauvignon,13.5% Alc./Vol.,750 mL,"Redwood Ridge Vineyards, Napa, CA",
+label_05_import_country.png,Isla Brava Tequila,Blanco Tequila,40% Alc./Vol. (80 Proof),750 mL,Destileria Isla Brava,Product of Mexico
+label_06_bad_photo_quality.png,OLD TOM DISTILLERY,Kentucky Straight Bourbon Whiskey,45% Alc./Vol. (90 Proof),750 mL,"Old Tom Distillery Co., Bardstown, KY",
