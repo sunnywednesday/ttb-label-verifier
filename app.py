@@ -90,16 +90,18 @@ def render_results(results, latency=None, quality_issue=None):
         if quality_issue:
             st.warning(f"Image quality note: {quality_issue}")
 
-    for r in results:
-        st.markdown(
-            f'''<div class="field-row" style="background:{STATUS_BG[r.status]}">
-            <span class="field-name" style="color:{STATUS_COLOR[r.status]}">{r.field} — {r.status.value}</span><br/>
-            <span class="field-value"><b>Application:</b> {r.application_value or "—"}</span><br/>
-            <span class="field-value"><b>On label:</b> {r.label_value or "(not found)"}</span>
-            {f'<br/><span class="field-value" style="font-style:italic">{r.note}</span>' if r.note else ""}
-            </div>''',
-            unsafe_allow_html=True)
-
+for r in results:
+        note_html = (f'<br/><span class="field-value" style="font-style:italic">{r.note}</span>'
+                     if r.note else "")
+        row_html = (
+            f'<div class="field-row" style="background:{STATUS_BG[r.status]}">'
+            f'<span class="field-name" style="color:{STATUS_COLOR[r.status]}">{r.field} — {r.status.value}</span><br/>'
+            f'<span class="field-value"><b>Application:</b> {r.application_value or "—"}</span><br/>'
+            f'<span class="field-value"><b>On label:</b> {r.label_value or "(not found)"}</span>'
+            f'{note_html}'
+            f'</div>'
+        )
+        st.markdown(row_html, unsafe_allow_html=True)
 
 if mode == "Single Label":
     col1, col2 = st.columns(2)
