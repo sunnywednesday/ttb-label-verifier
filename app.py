@@ -59,10 +59,21 @@ st.markdown('<p class="subtitle">Upload a label photo, compare it against the ap
 
 with st.sidebar:
     st.markdown("### Setup")
-    api_key = st.text_input("Anthropic API key", type="password",
-                             value=os.environ.get("ANTHROPIC_API_KEY", ""),
-                             help="Get one at console.anthropic.com. Not stored anywhere -- "
-                                  "used only for this session's requests.")
+    _deployment_key = os.environ.get("ANTHROPIC_API_KEY", "")
+    if _deployment_key:
+        # IMPORTANT: never pass a secret as a widget's default `value=`.
+        # Streamlit ships whatever you pass as `value` down to the browser
+        # to render the widget -- type="password" only masks it visually,
+        # the underlying string still transits to the client and is
+        # recoverable (DOM inspection, the field's reveal icon, etc).
+        # Reading it straight into a plain Python variable keeps it
+        # server-side only.
+        api_key = _deployment_key
+        st.success("Using the API key configured for this deployment.")
+    else:
+        api_key = st.text_input("Anthropic API key", type="password",
+                                 help="Get one at console.anthropic.com. Not stored anywhere -- "
+                                      "used only for this session's requests.")
     st.markdown("---")
     st.markdown("### About this prototype")
     st.caption(
